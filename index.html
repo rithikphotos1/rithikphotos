@@ -492,6 +492,76 @@ section{
     transform:translateY(-2px);
 }
 
+.contact-line{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin:12px 0;
+    color:#ddd;
+}
+
+.contact-small-btn{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:22px;
+    color:#111;
+    font-weight:700;
+    font-size:.88rem;
+    white-space:nowrap;
+    transition:.3s;
+}
+
+.contact-small-btn.btn-dark{
+    color:#fff;
+}
+
+.contact-small-btn:hover{
+    transform:translateY(-2px);
+}
+
+.contact-button-row{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.contact-button-row .btn{
+    margin:5px 0;
+}
+
+@media(max-width:520px){
+    .contact-line{
+        gap:8px;
+        align-items:center;
+    }
+
+    .contact-line span{
+        font-size:.9rem;
+        min-width:0;
+        overflow-wrap:anywhere;
+    }
+
+    .contact-small-btn{
+        padding:8px 10px;
+        font-size:.8rem;
+    }
+
+    .contact-button-row{
+        flex-wrap:nowrap;
+        gap:6px;
+    }
+
+    .contact-button-row .btn{
+        flex:1;
+        text-align:center;
+        padding:12px 10px;
+        font-size:.9rem;
+        white-space:nowrap;
+    }
+}
+
 
 /* =========================
    FORM
@@ -1015,9 +1085,15 @@ footer{
 
     <h3>Contact Us</h3>
 
-    <p>📱 +91 8526602777</p>
+    <div class="contact-line">
+        <span>📱 +91 8526602777</span>
+        <a class="contact-small-btn btn-primary" href="tel:+918526602777">📞 Call Us</a>
+    </div>
 
-    <p>✉️ rithikphotography19@gmail.com</p>
+    <div class="contact-line">
+        <span>✉️ rithikphotography19@gmail.com</span>
+        <a class="contact-small-btn btn-primary" href="mailto:rithikphotography19@gmail.com?subject=Photography%20Enquiry">✉️ Email Us</a>
+    </div>
 
     <p>
         📍 X7GM+F6, M.Puthur,
@@ -1040,22 +1116,6 @@ footer{
         🕐 Mon–Sun: 9:00 AM – 10:00 PM
     </p>
 
-
-    <a
-        class="btn btn-primary"
-        href="tel:+918526602777">
-
-        📞 Call Us
-
-    </a>
-
-    <a
-        class="btn btn-dark"
-        href="mailto:rithikphotography19@gmail.com?subject=Photography%20Enquiry">
-
-        ✉️ Email Us
-
-    </a>
 
     <a
         class="btn btn-primary"
