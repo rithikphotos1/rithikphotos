@@ -489,6 +489,8 @@
             overflow: hidden;
 
             transition: .4s;
+
+            cursor: pointer;
         }
 
         .card::before {
@@ -520,6 +522,28 @@
                 0 0 35px rgba(212, 175, 55, .08);
         }
 
+        .card-cta {
+            display: inline-block;
+
+            margin-top: 14px;
+
+            color: var(--gold2);
+
+            font-size: .72rem;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+            font-weight: 700;
+
+            opacity: .8;
+        }
+
+        .card:hover .card-cta {
+            opacity: 1;
+        }
+
         .icon {
             font-size: 2rem;
 
@@ -547,8 +571,224 @@
 
 
         /* =========================================================
-           GALLERY
+           PACKAGES / PRICING
         ========================================================= */
+
+        .packages {
+            background:
+                linear-gradient(
+                    180deg,
+                    #050505,
+                    #0a0a0a
+                );
+        }
+
+        .pricing-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+
+            align-items: stretch;
+        }
+
+        .price-card {
+            position: relative;
+
+            display: flex;
+
+            flex-direction: column;
+
+            padding: 40px 30px 34px;
+
+            border:
+                1px solid rgba(255, 255, 255, .1);
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    160deg,
+                    rgba(255, 255, 255, .06),
+                    rgba(255, 255, 255, .02)
+                );
+
+            box-shadow:
+                0 15px 50px rgba(0, 0, 0, .25);
+
+            transition: .4s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-8px);
+
+            border-color: var(--line);
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, .5),
+                0 0 35px rgba(212, 175, 55, .08);
+        }
+
+        .price-card.featured {
+            border-color: var(--gold);
+
+            background:
+                linear-gradient(
+                    160deg,
+                    rgba(212, 175, 55, .12),
+                    rgba(255, 255, 255, .03)
+                );
+
+            transform: scale(1.035);
+        }
+
+        .price-card.featured:hover {
+            transform: scale(1.035) translateY(-8px);
+        }
+
+        .price-badge {
+            position: absolute;
+
+            top: -14px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--gold3),
+                    var(--gold)
+                );
+
+            color: #090909;
+
+            font-size: .68rem;
+
+            font-weight: 700;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+
+            padding: 6px 16px;
+
+            border-radius: 20px;
+
+            white-space: nowrap;
+        }
+
+        .price-tier {
+            color: var(--gold2);
+
+            font-size: .78rem;
+
+            letter-spacing: .2em;
+
+            text-transform: uppercase;
+
+            font-weight: 600;
+
+            margin-bottom: 10px;
+        }
+
+        .price-card h3 {
+            font-size: 2.1rem;
+
+            color: #fff;
+
+            margin-bottom: 6px;
+        }
+
+        .price-amount {
+            display: flex;
+
+            align-items: baseline;
+
+            gap: 6px;
+
+            margin: 14px 0 6px;
+        }
+
+        .price-amount .amount {
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 3rem;
+
+            font-weight: 600;
+
+            color: var(--gold2);
+        }
+
+        .price-amount .period {
+            color: var(--muted);
+
+            font-size: .85rem;
+        }
+
+        .price-note {
+            color: var(--muted);
+
+            font-size: .78rem;
+
+            margin-bottom: 22px;
+        }
+
+        .price-features {
+            list-style: none;
+
+            margin: 0 0 28px;
+
+            flex-grow: 1;
+        }
+
+        .price-features li {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            padding: 9px 0;
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, .06);
+
+            color: #ddd;
+
+            font-size: .89rem;
+        }
+
+        .price-features li:last-child {
+            border-bottom: none;
+        }
+
+        .price-features li::before {
+            content: "✓";
+
+            color: var(--gold2);
+
+            font-weight: 700;
+
+            flex-shrink: 0;
+        }
+
+        .price-card .btn {
+            width: 100%;
+        }
+
+        .packages-footnote {
+            text-align: center;
+
+            color: var(--muted);
+
+            font-size: .82rem;
+
+            margin-top: 30px;
+        }
 
         .gallery-wrap {
             position: relative;
@@ -964,6 +1204,8 @@
             color: #fff;
 
             font: inherit;
+
+            transition: box-shadow .5s, border-color .5s;
         }
 
         input:focus,
@@ -976,6 +1218,29 @@
             box-shadow:
                 0 0 0 3px
                 rgba(212, 175, 55, .08);
+        }
+
+        select.highlight,
+        select.highlight:focus {
+            border-color: var(--gold);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(212, 175, 55, .22);
+        }
+
+        .date-error {
+            display: none;
+
+            color: #ff8080;
+
+            font-size: .78rem;
+
+            margin: -8px 0 12px;
+        }
+
+        .date-error.show {
+            display: block;
         }
 
         select option {
@@ -1228,6 +1493,18 @@
                     repeat(2, 1fr);
             }
 
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-card.featured {
+                transform: none;
+            }
+
+            .price-card.featured:hover {
+                transform: translateY(-8px);
+            }
+
             .about-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -1422,6 +1699,10 @@
                     Services
                 </a>
 
+                <a href="#packages">
+                    Packages
+                </a>
+
                 <a href="#gallery">
                     Gallery
                 </a>
@@ -1530,6 +1811,7 @@
                 <p>
                     Premium visual experiences for life's celebrations,
                     from intimate portraits to unforgettable weddings.
+                    Tap a service to jump straight to the booking form.
                 </p>
 
             </div>
@@ -1537,7 +1819,7 @@
 
             <div class="services">
 
-                <div class="card">
+                <div class="card" onclick="selectService('Wedding')">
 
                     <div class="icon">
                         💍
@@ -1552,10 +1834,14 @@
                         on emotion, elegance and every beautiful detail.
                     </p>
 
+                    <span class="card-cta">
+                        Book this →
+                    </span>
+
                 </div>
 
 
-                <div class="card">
+                <div class="card" onclick="selectService('Stage Decoration')">
 
                     <div class="icon">
                         🎪
@@ -1570,10 +1856,14 @@
                         tailored to your event style.
                     </p>
 
+                    <span class="card-cta">
+                        Book this →
+                    </span>
+
                 </div>
 
 
-                <div class="card">
+                <div class="card" onclick="selectService('Sound System')">
 
                     <div class="icon">
                         🔊
@@ -1588,10 +1878,14 @@
                         setup for clear, powerful sound.
                     </p>
 
+                    <span class="card-cta">
+                        Book this →
+                    </span>
+
                 </div>
 
 
-                <div class="card">
+                <div class="card" onclick="selectService('Portrait')">
 
                     <div class="icon">
                         📸
@@ -1606,10 +1900,14 @@
                         families with a refined editorial feel.
                     </p>
 
+                    <span class="card-cta">
+                        Book this →
+                    </span>
+
                 </div>
 
 
-                <div class="card">
+                <div class="card" onclick="selectService('Birthday / Event')">
 
                     <div class="icon">
                         🎉
@@ -1624,10 +1922,14 @@
                         functions captured naturally and professionally.
                     </p>
 
+                    <span class="card-cta">
+                        Book this →
+                    </span>
+
                 </div>
 
 
-                <div class="card">
+                <div class="card" onclick="selectService('Baby & Family')">
 
                     <div class="icon">
                         👶
@@ -1642,9 +1944,241 @@
                         moments your family will cherish.
                     </p>
 
+                    <span class="card-cta">
+                        Book this →
+                    </span>
+
                 </div>
 
             </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         PACKAGES / PRICING
+    ========================================================= -->
+
+    <section class="packages" id="packages">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <div class="kicker">
+                    Pricing
+                </div>
+
+                <h2>
+                    Choose Your Package
+                </h2>
+
+                <p>
+                    Simple, transparent packages for every kind of shoot.
+                    Need something custom? Just message us.
+                </p>
+
+            </div>
+
+
+            <div class="pricing-grid">
+
+                <!-- BASIC -->
+                <div class="price-card">
+
+                    <div class="price-tier">
+                        Basic
+                    </div>
+
+                    <h3>
+                        Essentials
+                    </h3>
+
+                    <div class="price-amount">
+                        <span class="amount">
+                            ₹9,999
+                        </span>
+                        <span class="period">
+                            / shoot
+                        </span>
+                    </div>
+
+                    <p class="price-note">
+                        Ideal for small events & simple portrait sessions
+                    </p>
+
+                    <ul class="price-features">
+
+                        <li>
+                            2 Hours coverage
+                        </li>
+
+                        <li>
+                            1 Photographer
+                        </li>
+
+                        <li>
+                            50+ Edited photos
+                        </li>
+
+                        <li>
+                            Online gallery delivery
+                        </li>
+
+                        <li>
+                            Delivery in 7 days
+                        </li>
+
+                    </ul>
+
+                    <a
+                        class="btn btn-outline"
+                        href="#contact"
+                        onclick="selectPackage('Basic')"
+                    >
+                        Choose Basic
+                    </a>
+
+                </div>
+
+
+                <!-- PREMIUM -->
+                <div class="price-card featured">
+
+                    <div class="price-badge">
+                        Most Popular
+                    </div>
+
+                    <div class="price-tier">
+                        Premium
+                    </div>
+
+                    <h3>
+                        Signature
+                    </h3>
+
+                    <div class="price-amount">
+                        <span class="amount">
+                            ₹24,999
+                        </span>
+                        <span class="period">
+                            / shoot
+                        </span>
+                    </div>
+
+                    <p class="price-note">
+                        Perfect for weddings, birthdays & full-day events
+                    </p>
+
+                    <ul class="price-features">
+
+                        <li>
+                            6 Hours coverage
+                        </li>
+
+                        <li>
+                            2 Photographers
+                        </li>
+
+                        <li>
+                            150+ Edited photos
+                        </li>
+
+                        <li>
+                            Cinematic highlight video
+                        </li>
+
+                        <li>
+                            Online gallery + USB delivery
+                        </li>
+
+                        <li>
+                            Delivery in 5 days
+                        </li>
+
+                    </ul>
+
+                    <a
+                        class="btn btn-gold"
+                        href="#contact"
+                        onclick="selectPackage('Premium')"
+                    >
+                        Choose Premium
+                    </a>
+
+                </div>
+
+
+                <!-- LUXURY -->
+                <div class="price-card">
+
+                    <div class="price-tier">
+                        Luxury
+                    </div>
+
+                    <h3>
+                        Grand Celebration
+                    </h3>
+
+                    <div class="price-amount">
+                        <span class="amount">
+                            ₹49,999
+                        </span>
+                        <span class="period">
+                            / shoot
+                        </span>
+                    </div>
+
+                    <p class="price-note">
+                        For weddings & receptions that deserve it all
+                    </p>
+
+                    <ul class="price-features">
+
+                        <li>
+                            Full day coverage
+                        </li>
+
+                        <li>
+                            3 Photographers + drone shots
+                        </li>
+
+                        <li>
+                            300+ Edited photos
+                        </li>
+
+                        <li>
+                            Cinematic film + reels
+                        </li>
+
+                        <li>
+                            Premium photo album
+                        </li>
+
+                        <li>
+                            Priority delivery in 3 days
+                        </li>
+
+                    </ul>
+
+                    <a
+                        class="btn btn-outline"
+                        href="#contact"
+                        onclick="selectPackage('Luxury')"
+                    >
+                        Choose Luxury
+                    </a>
+
+                </div>
+
+            </div>
+
+            <p class="packages-footnote">
+                * Prices shown are placeholders — final pricing may vary
+                by location and requirements. Contact us for a custom quote.
+            </p>
 
         </div>
 
@@ -2062,6 +2596,31 @@
                     </select>
 
 
+                    <label for="package">
+                        Package
+                    </label>
+
+                    <select id="package">
+
+                        <option value="">
+                            Select a package (optional)
+                        </option>
+
+                        <option>
+                            Basic
+                        </option>
+
+                        <option>
+                            Premium
+                        </option>
+
+                        <option>
+                            Luxury
+                        </option>
+
+                    </select>
+
+
                     <label for="date">
                         Event Date
                     </label>
@@ -2070,6 +2629,8 @@
                         id="date"
                         type="date"
                     >
+
+                    <span id="dateError" class="date-error"></span>
 
 
                     <label for="message">
@@ -2147,6 +2708,144 @@
                 nav.classList.remove("mobile-open");
             });
 
+        });
+
+
+        /* =====================================================
+           SERVICE CARD -> BOOKING FORM AUTO-SELECT
+        ===================================================== */
+
+        function selectService(serviceName) {
+
+            const select = document.getElementById("service");
+
+            // Pick the option whose text matches the card, if it exists
+            const match = Array.from(select.options).find(
+                (opt) => opt.value === serviceName
+            );
+
+            select.value = match ? serviceName : "Other";
+
+            // Scroll the booking form into view
+            document
+                .getElementById("contact")
+                .scrollIntoView({ behavior: "smooth", block: "start" });
+
+            // Briefly highlight the dropdown so it's clear it auto-filled
+            select.classList.add("highlight");
+
+            setTimeout(() => {
+                select.classList.remove("highlight");
+            }, 1600);
+
+            // Focus the name field after the scroll settles, ready to type
+            setTimeout(() => {
+                document.getElementById("name").focus();
+            }, 550);
+        }
+
+
+        function selectPackage(packageName) {
+
+            const select = document.getElementById("package");
+
+            select.value = packageName;
+
+            // Scroll the booking form into view
+            document
+                .getElementById("contact")
+                .scrollIntoView({ behavior: "smooth", block: "start" });
+
+            // Briefly highlight the dropdown so it's clear it auto-filled
+            select.classList.add("highlight");
+
+            setTimeout(() => {
+                select.classList.remove("highlight");
+            }, 1600);
+
+            // Focus the name field after the scroll settles, ready to type
+            setTimeout(() => {
+                document.getElementById("name").focus();
+            }, 550);
+        }
+
+
+        /* =====================================================
+           EVENT DATE VALIDATION (fixes bad/oversized year values)
+        ===================================================== */
+
+        const dateInput = document.getElementById("date");
+        const dateError = document.getElementById("dateError");
+
+        function todayISO() {
+            const d = new Date();
+            return d.toISOString().split("T")[0];
+        }
+
+        function maxDateISO() {
+            const d = new Date();
+            d.setFullYear(d.getFullYear() + 5);
+            return d.toISOString().split("T")[0];
+        }
+
+        // Restrict the picker to today .. +5 years, so no wild years
+        dateInput.min = todayISO();
+        dateInput.max = maxDateISO();
+
+        function showDateError(msg) {
+            dateError.textContent = msg;
+            dateError.classList.add("show");
+            dateInput.classList.add("highlight");
+        }
+
+        function clearDateError() {
+            dateError.textContent = "";
+            dateError.classList.remove("show");
+            dateInput.classList.remove("highlight");
+        }
+
+        dateInput.addEventListener("input", () => {
+
+            const raw = dateInput.value;
+
+            if (!raw) {
+                clearDateError();
+                return;
+            }
+
+            const year = raw.split("-")[0];
+
+            // Browsers can let a year grow past 4 digits while typing;
+            // if that happens, clear the field instead of keeping junk.
+            if (year.length > 4) {
+                dateInput.value = "";
+                showDateError(
+                    "Please enter a valid year (4 digits)."
+                );
+                return;
+            }
+
+            const entered = new Date(raw);
+            const min = new Date(dateInput.min);
+            const max = new Date(dateInput.max);
+
+            if (entered < min) {
+                dateInput.value = "";
+                showDateError(
+                    "Event date can't be in the past."
+                );
+                return;
+            }
+
+            if (entered > max) {
+                dateInput.value = "";
+                showDateError(
+                    "Please choose a date within the next 5 years."
+                );
+                return;
+            }
+
+            clearDateError();
         });
 
 
@@ -2249,6 +2948,12 @@
 
                 event.preventDefault();
 
+                // Block submission if the date field still shows an error
+                if (dateError.classList.contains("show")) {
+                    dateInput.focus();
+                    return;
+                }
+
 
                 const name =
                     document.getElementById("name").value;
@@ -2258,6 +2963,10 @@
 
                 const service =
                     document.getElementById("service").value;
+
+                const packageChoice =
+                    document.getElementById("package").value ||
+                    "Not selected";
 
                 const date =
                     document.getElementById("date").value ||
@@ -2274,6 +2983,7 @@
 Name: ${name}
 Phone: ${phone}
 Service: ${service}
+Package: ${packageChoice}
 Event Date: ${date}
 Message: ${message}`;
 
