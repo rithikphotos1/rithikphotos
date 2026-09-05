@@ -522,11 +522,18 @@
                 0 0 35px rgba(212, 175, 55, .08);
         }
 
-        .card-cta {
-            display: inline-block;
+        .card-links {
+            display: flex;
+
+            gap: 14px;
 
             margin-top: 14px;
 
+            flex-wrap: wrap;
+        }
+
+        .card-cta,
+        .card-pricing-link {
             color: var(--gold2);
 
             font-size: .72rem;
@@ -538,6 +545,18 @@
             font-weight: 700;
 
             opacity: .8;
+        }
+
+        .card-pricing-link {
+            text-decoration: underline;
+
+            text-underline-offset: 3px;
+
+            opacity: .6;
+        }
+
+        .card-pricing-link:hover {
+            opacity: 1;
         }
 
         .card:hover .card-cta {
@@ -583,13 +602,76 @@
                 );
         }
 
+        .pkg-tabs {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-bottom: 42px;
+        }
+
+        .pkg-tab {
+            padding: 10px 20px;
+
+            border: 1px solid rgba(255, 255, 255, .16);
+
+            border-radius: 30px;
+
+            background: rgba(255, 255, 255, .04);
+
+            color: #ddd;
+
+            font-size: .74rem;
+
+            letter-spacing: .06em;
+
+            text-transform: uppercase;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .pkg-tab:hover {
+            border-color: var(--gold);
+
+            color: var(--gold2);
+        }
+
+        .pkg-tab.active {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--gold3),
+                    var(--gold)
+                );
+
+            color: #090909;
+
+            border-color: var(--gold);
+        }
+
+        .pricing-group {
+            display: none;
+        }
+
+        .pricing-group.active {
+            display: block;
+        }
+
         .pricing-grid {
             display: grid;
 
             grid-template-columns:
                 repeat(3, 1fr);
 
-            gap: 22px;
+            gap: 18px;
 
             align-items: stretch;
         }
@@ -601,28 +683,51 @@
 
             flex-direction: column;
 
-            padding: 40px 30px 34px;
+            padding: 30px 26px;
+
+            min-height: 230px;
 
             border:
-                1px solid rgba(255, 255, 255, .1);
+                1px solid rgba(255, 255, 255, .09);
 
-            border-radius: 18px;
+            border-radius: 16px;
 
             background:
                 linear-gradient(
-                    160deg,
-                    rgba(255, 255, 255, .06),
-                    rgba(255, 255, 255, .02)
+                    145deg,
+                    rgba(255, 255, 255, .07),
+                    rgba(255, 255, 255, .025)
                 );
 
             box-shadow:
-                0 15px 50px rgba(0, 0, 0, .25);
+                0 15px 50px rgba(0, 0, 0, .22);
+
+            overflow: hidden;
 
             transition: .4s;
         }
 
+        .price-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 150px;
+            height: 150px;
+
+            right: -80px;
+            top: -80px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(212, 175, 55, .13);
+
+            filter: blur(5px);
+        }
+
         .price-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-9px);
 
             border-color: var(--line);
 
@@ -636,26 +741,18 @@
 
             background:
                 linear-gradient(
-                    160deg,
+                    145deg,
                     rgba(212, 175, 55, .12),
-                    rgba(255, 255, 255, .03)
+                    rgba(255, 255, 255, .025)
                 );
-
-            transform: scale(1.035);
-        }
-
-        .price-card.featured:hover {
-            transform: scale(1.035) translateY(-8px);
         }
 
         .price-badge {
             position: absolute;
 
-            top: -14px;
+            top: 16px;
 
-            left: 50%;
-
-            transform: translateX(-50%);
+            right: 16px;
 
             background:
                 linear-gradient(
@@ -666,15 +763,15 @@
 
             color: #090909;
 
-            font-size: .68rem;
+            font-size: .62rem;
 
             font-weight: 700;
 
-            letter-spacing: .08em;
+            letter-spacing: .06em;
 
             text-transform: uppercase;
 
-            padding: 6px 16px;
+            padding: 5px 11px;
 
             border-radius: 20px;
 
@@ -684,23 +781,23 @@
         .price-tier {
             color: var(--gold2);
 
-            font-size: .78rem;
+            font-size: .7rem;
 
-            letter-spacing: .2em;
+            letter-spacing: .18em;
 
             text-transform: uppercase;
 
             font-weight: 600;
 
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
 
         .price-card h3 {
-            font-size: 2.1rem;
+            font-size: 1.55rem;
 
             color: #fff;
 
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .price-amount {
@@ -708,15 +805,15 @@
 
             align-items: baseline;
 
-            gap: 6px;
+            gap: 5px;
 
-            margin: 14px 0 6px;
+            margin: 10px 0 4px;
         }
 
         .price-amount .amount {
             font-family: "Cormorant Garamond", serif;
 
-            font-size: 3rem;
+            font-size: 2.2rem;
 
             font-weight: 600;
 
@@ -726,21 +823,21 @@
         .price-amount .period {
             color: var(--muted);
 
-            font-size: .85rem;
+            font-size: .78rem;
         }
 
         .price-note {
             color: var(--muted);
 
-            font-size: .78rem;
+            font-size: .76rem;
 
-            margin-bottom: 22px;
+            margin-bottom: 14px;
         }
 
         .price-features {
             list-style: none;
 
-            margin: 0 0 28px;
+            margin: 0 0 18px;
 
             flex-grow: 1;
         }
@@ -750,34 +847,33 @@
 
             align-items: flex-start;
 
-            gap: 10px;
+            gap: 8px;
 
-            padding: 9px 0;
+            padding: 6px 0;
 
-            border-bottom:
-                1px solid rgba(255, 255, 255, .06);
+            color: #ccc;
 
-            color: #ddd;
-
-            font-size: .89rem;
-        }
-
-        .price-features li:last-child {
-            border-bottom: none;
+            font-size: .82rem;
         }
 
         .price-features li::before {
-            content: "✓";
+            content: "✦";
 
             color: var(--gold2);
 
             font-weight: 700;
 
             flex-shrink: 0;
+
+            font-size: .74rem;
         }
 
         .price-card .btn {
             width: 100%;
+
+            padding: 11px 18px;
+
+            font-size: .74rem;
         }
 
         .packages-footnote {
@@ -1497,14 +1593,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .price-card.featured {
-                transform: none;
-            }
-
-            .price-card.featured:hover {
-                transform: translateY(-8px);
-            }
-
             .about-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -1571,6 +1659,26 @@
 
             .services {
                 grid-template-columns: 1fr;
+            }
+
+            .pkg-tabs {
+                flex-wrap: nowrap;
+
+                overflow-x: auto;
+
+                justify-content: flex-start;
+
+                padding-bottom: 6px;
+
+                scrollbar-width: none;
+            }
+
+            .pkg-tabs::-webkit-scrollbar {
+                display: none;
+            }
+
+            .pkg-tab {
+                flex: 0 0 auto;
             }
 
             .card {
@@ -1834,9 +1942,15 @@
                         on emotion, elegance and every beautiful detail.
                     </p>
 
-                    <span class="card-cta">
-                        Book this →
-                    </span>
+                    <div class="card-links">
+                        <span class="card-cta">
+                            Book this →
+                        </span>
+                        <a class="card-pricing-link" href="#packages"
+                           onclick="event.stopPropagation(); showPackagesFor('Wedding')">
+                            View pricing
+                        </a>
+                    </div>
 
                 </div>
 
@@ -1856,9 +1970,15 @@
                         tailored to your event style.
                     </p>
 
-                    <span class="card-cta">
-                        Book this →
-                    </span>
+                    <div class="card-links">
+                        <span class="card-cta">
+                            Book this →
+                        </span>
+                        <a class="card-pricing-link" href="#packages"
+                           onclick="event.stopPropagation(); showPackagesFor('Stage Decoration')">
+                            View pricing
+                        </a>
+                    </div>
 
                 </div>
 
@@ -1878,9 +1998,15 @@
                         setup for clear, powerful sound.
                     </p>
 
-                    <span class="card-cta">
-                        Book this →
-                    </span>
+                    <div class="card-links">
+                        <span class="card-cta">
+                            Book this →
+                        </span>
+                        <a class="card-pricing-link" href="#packages"
+                           onclick="event.stopPropagation(); showPackagesFor('Sound System')">
+                            View pricing
+                        </a>
+                    </div>
 
                 </div>
 
@@ -1900,9 +2026,15 @@
                         families with a refined editorial feel.
                     </p>
 
-                    <span class="card-cta">
-                        Book this →
-                    </span>
+                    <div class="card-links">
+                        <span class="card-cta">
+                            Book this →
+                        </span>
+                        <a class="card-pricing-link" href="#packages"
+                           onclick="event.stopPropagation(); showPackagesFor('Portrait')">
+                            View pricing
+                        </a>
+                    </div>
 
                 </div>
 
@@ -1922,9 +2054,15 @@
                         functions captured naturally and professionally.
                     </p>
 
-                    <span class="card-cta">
-                        Book this →
-                    </span>
+                    <div class="card-links">
+                        <span class="card-cta">
+                            Book this →
+                        </span>
+                        <a class="card-pricing-link" href="#packages"
+                           onclick="event.stopPropagation(); showPackagesFor('Birthday / Event')">
+                            View pricing
+                        </a>
+                    </div>
 
                 </div>
 
@@ -1944,9 +2082,15 @@
                         moments your family will cherish.
                     </p>
 
-                    <span class="card-cta">
-                        Book this →
-                    </span>
+                    <div class="card-links">
+                        <span class="card-cta">
+                            Book this →
+                        </span>
+                        <a class="card-pricing-link" href="#packages"
+                           onclick="event.stopPropagation(); showPackagesFor('Baby & Family')">
+                            View pricing
+                        </a>
+                    </div>
 
                 </div>
 
@@ -1976,204 +2120,491 @@
                 </h2>
 
                 <p>
-                    Simple, transparent packages for every kind of shoot.
-                    Need something custom? Just message us.
+                    Pick a service below to see Basic, Premium and Luxury
+                    pricing. Need something custom? Just message us.
                 </p>
 
             </div>
 
 
-            <div class="pricing-grid">
+            <div class="pkg-tabs" id="pkgTabs">
 
-                <!-- BASIC -->
-                <div class="price-card">
+                <button class="pkg-tab active" data-service="Wedding">
+                    Wedding
+                </button>
 
-                    <div class="price-tier">
-                        Basic
-                    </div>
+                <button class="pkg-tab" data-service="Stage Decoration">
+                    Stage Decoration
+                </button>
 
-                    <h3>
-                        Essentials
-                    </h3>
+                <button class="pkg-tab" data-service="Sound System">
+                    Sound System
+                </button>
 
-                    <div class="price-amount">
-                        <span class="amount">
-                            ₹9,999
-                        </span>
-                        <span class="period">
-                            / shoot
-                        </span>
-                    </div>
+                <button class="pkg-tab" data-service="Portrait">
+                    Portraits
+                </button>
 
-                    <p class="price-note">
-                        Ideal for small events & simple portrait sessions
-                    </p>
+                <button class="pkg-tab" data-service="Birthday / Event">
+                    Events
+                </button>
 
-                    <ul class="price-features">
-
-                        <li>
-                            2 Hours coverage
-                        </li>
-
-                        <li>
-                            1 Photographer
-                        </li>
-
-                        <li>
-                            50+ Edited photos
-                        </li>
-
-                        <li>
-                            Online gallery delivery
-                        </li>
-
-                        <li>
-                            Delivery in 7 days
-                        </li>
-
-                    </ul>
-
-                    <a
-                        class="btn btn-outline"
-                        href="#contact"
-                        onclick="selectPackage('Basic')"
-                    >
-                        Choose Basic
-                    </a>
-
-                </div>
-
-
-                <!-- PREMIUM -->
-                <div class="price-card featured">
-
-                    <div class="price-badge">
-                        Most Popular
-                    </div>
-
-                    <div class="price-tier">
-                        Premium
-                    </div>
-
-                    <h3>
-                        Signature
-                    </h3>
-
-                    <div class="price-amount">
-                        <span class="amount">
-                            ₹24,999
-                        </span>
-                        <span class="period">
-                            / shoot
-                        </span>
-                    </div>
-
-                    <p class="price-note">
-                        Perfect for weddings, birthdays & full-day events
-                    </p>
-
-                    <ul class="price-features">
-
-                        <li>
-                            6 Hours coverage
-                        </li>
-
-                        <li>
-                            2 Photographers
-                        </li>
-
-                        <li>
-                            150+ Edited photos
-                        </li>
-
-                        <li>
-                            Cinematic highlight video
-                        </li>
-
-                        <li>
-                            Online gallery + USB delivery
-                        </li>
-
-                        <li>
-                            Delivery in 5 days
-                        </li>
-
-                    </ul>
-
-                    <a
-                        class="btn btn-gold"
-                        href="#contact"
-                        onclick="selectPackage('Premium')"
-                    >
-                        Choose Premium
-                    </a>
-
-                </div>
-
-
-                <!-- LUXURY -->
-                <div class="price-card">
-
-                    <div class="price-tier">
-                        Luxury
-                    </div>
-
-                    <h3>
-                        Grand Celebration
-                    </h3>
-
-                    <div class="price-amount">
-                        <span class="amount">
-                            ₹49,999
-                        </span>
-                        <span class="period">
-                            / shoot
-                        </span>
-                    </div>
-
-                    <p class="price-note">
-                        For weddings & receptions that deserve it all
-                    </p>
-
-                    <ul class="price-features">
-
-                        <li>
-                            Full day coverage
-                        </li>
-
-                        <li>
-                            3 Photographers + drone shots
-                        </li>
-
-                        <li>
-                            300+ Edited photos
-                        </li>
-
-                        <li>
-                            Cinematic film + reels
-                        </li>
-
-                        <li>
-                            Premium photo album
-                        </li>
-
-                        <li>
-                            Priority delivery in 3 days
-                        </li>
-
-                    </ul>
-
-                    <a
-                        class="btn btn-outline"
-                        href="#contact"
-                        onclick="selectPackage('Luxury')"
-                    >
-                        Choose Luxury
-                    </a>
-
-                </div>
+                <button class="pkg-tab" data-service="Baby & Family">
+                    Baby & Family
+                </button>
 
             </div>
+
+
+            <!-- ============ WEDDING ============ -->
+            <div class="pricing-group active" data-service="Wedding">
+                <div class="pricing-grid">
+
+                    <div class="price-card">
+                        <div class="price-tier">Basic</div>
+                        <h3>Essentials</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹14,999</span>
+                            <span class="period">/ shoot</span>
+                        </div>
+                        <p class="price-note">
+                            Simple coverage for intimate weddings
+                        </p>
+                        <ul class="price-features">
+                            <li>4 Hours coverage</li>
+                            <li>1 Photographer</li>
+                            <li>100+ Edited photos</li>
+                            <li>Delivery in 10 days</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Wedding','Basic')">
+                            Choose Basic
+                        </a>
+                    </div>
+
+                    <div class="price-card featured">
+                        <div class="price-badge">Most Popular</div>
+                        <div class="price-tier">Premium</div>
+                        <h3>Signature</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹29,999</span>
+                            <span class="period">/ shoot</span>
+                        </div>
+                        <p class="price-note">
+                            Full-day coverage with a highlight film
+                        </p>
+                        <ul class="price-features">
+                            <li>8 Hours coverage</li>
+                            <li>2 Photographers</li>
+                            <li>250+ Edited photos</li>
+                            <li>Highlight film</li>
+                        </ul>
+                        <a class="btn btn-gold" href="#contact"
+                           onclick="selectPackage('Wedding','Premium')">
+                            Choose Premium
+                        </a>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="price-tier">Luxury</div>
+                        <h3>Grand Celebration</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹59,999</span>
+                            <span class="period">/ shoot</span>
+                        </div>
+                        <p class="price-note">
+                            Complete pre-wedding to reception coverage
+                        </p>
+                        <ul class="price-features">
+                            <li>Full day + pre-wedding</li>
+                            <li>3 Photographers + drone</li>
+                            <li>400+ Edited photos</li>
+                            <li>Cinematic film + album</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Wedding','Luxury')">
+                            Choose Luxury
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ============ STAGE DECORATION ============ -->
+            <div class="pricing-group" data-service="Stage Decoration">
+                <div class="pricing-grid">
+
+                    <div class="price-card">
+                        <div class="price-tier">Basic</div>
+                        <h3>Essentials</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹7,999</span>
+                            <span class="period">/ event</span>
+                        </div>
+                        <p class="price-note">
+                            Clean, simple stage backdrop
+                        </p>
+                        <ul class="price-features">
+                            <li>Simple floral backdrop</li>
+                            <li>Basic lighting</li>
+                            <li>Setup & teardown</li>
+                            <li>1 Day rental</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Stage Decoration','Basic')">
+                            Choose Basic
+                        </a>
+                    </div>
+
+                    <div class="price-card featured">
+                        <div class="price-badge">Most Popular</div>
+                        <div class="price-tier">Premium</div>
+                        <h3>Signature</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹15,999</span>
+                            <span class="period">/ event</span>
+                        </div>
+                        <p class="price-note">
+                            Themed decor with an entry arch
+                        </p>
+                        <ul class="price-features">
+                            <li>Themed backdrop design</li>
+                            <li>LED accent lighting</li>
+                            <li>Entry arch included</li>
+                            <li>1 Day rental</li>
+                        </ul>
+                        <a class="btn btn-gold" href="#contact"
+                           onclick="selectPackage('Stage Decoration','Premium')">
+                            Choose Premium
+                        </a>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="price-tier">Luxury</div>
+                        <h3>Grand Celebration</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹27,999</span>
+                            <span class="period">/ event</span>
+                        </div>
+                        <p class="price-note">
+                            Premium drapes with a custom photo wall
+                        </p>
+                        <ul class="price-features">
+                            <li>Premium floral + fabric drapes</li>
+                            <li>Full stage lighting design</li>
+                            <li>Custom entry & photo wall</li>
+                            <li>2 Day rental</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Stage Decoration','Luxury')">
+                            Choose Luxury
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ============ SOUND SYSTEM ============ -->
+            <div class="pricing-group" data-service="Sound System">
+                <div class="pricing-grid">
+
+                    <div class="price-card">
+                        <div class="price-tier">Basic</div>
+                        <h3>Essentials</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹4,999</span>
+                            <span class="period">/ event</span>
+                        </div>
+                        <p class="price-note">
+                            Small gatherings & indoor functions
+                        </p>
+                        <ul class="price-features">
+                            <li>2 Speakers + mixer</li>
+                            <li>1 Wireless mic</li>
+                            <li>Basic setup</li>
+                            <li>Half-day rental</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Sound System','Basic')">
+                            Choose Basic
+                        </a>
+                    </div>
+
+                    <div class="price-card featured">
+                        <div class="price-badge">Most Popular</div>
+                        <div class="price-tier">Premium</div>
+                        <h3>Signature</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹9,999</span>
+                            <span class="period">/ event</span>
+                        </div>
+                        <p class="price-note">
+                            Full sound with DJ console
+                        </p>
+                        <ul class="price-features">
+                            <li>4 Speakers + subwoofer</li>
+                            <li>2 Wireless mics</li>
+                            <li>DJ console</li>
+                            <li>Full-day rental</li>
+                        </ul>
+                        <a class="btn btn-gold" href="#contact"
+                           onclick="selectPackage('Sound System','Premium')">
+                            Choose Premium
+                        </a>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="price-tier">Luxury</div>
+                        <h3>Grand Celebration</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹17,999</span>
+                            <span class="period">/ event</span>
+                        </div>
+                        <p class="price-note">
+                            Full PA setup with a dedicated operator
+                        </p>
+                        <ul class="price-features">
+                            <li>Full PA system</li>
+                            <li>4 Wireless mics</li>
+                            <li>DJ + operator included</li>
+                            <li>Full event coverage</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Sound System','Luxury')">
+                            Choose Luxury
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ============ PORTRAITS ============ -->
+            <div class="pricing-group" data-service="Portrait">
+                <div class="pricing-grid">
+
+                    <div class="price-card">
+                        <div class="price-tier">Basic</div>
+                        <h3>Essentials</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹3,999</span>
+                            <span class="period">/ session</span>
+                        </div>
+                        <p class="price-note">
+                            Quick single-location session
+                        </p>
+                        <ul class="price-features">
+                            <li>1 Hour session</li>
+                            <li>1 Location</li>
+                            <li>20+ Edited photos</li>
+                            <li>Online gallery</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Portrait','Basic')">
+                            Choose Basic
+                        </a>
+                    </div>
+
+                    <div class="price-card featured">
+                        <div class="price-badge">Most Popular</div>
+                        <div class="price-tier">Premium</div>
+                        <h3>Signature</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹7,999</span>
+                            <span class="period">/ session</span>
+                        </div>
+                        <p class="price-note">
+                            More locations, more looks
+                        </p>
+                        <ul class="price-features">
+                            <li>2 Hour session</li>
+                            <li>2 Locations</li>
+                            <li>50+ Edited photos</li>
+                            <li>Outfit changes</li>
+                        </ul>
+                        <a class="btn btn-gold" href="#contact"
+                           onclick="selectPackage('Portrait','Premium')">
+                            Choose Premium
+                        </a>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="price-tier">Luxury</div>
+                        <h3>Grand Celebration</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹14,999</span>
+                            <span class="period">/ session</span>
+                        </div>
+                        <p class="price-note">
+                            A full editorial-style shoot day
+                        </p>
+                        <ul class="price-features">
+                            <li>Half day session</li>
+                            <li>Multiple locations</li>
+                            <li>100+ Edited photos</li>
+                            <li>Printed photo album</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Portrait','Luxury')">
+                            Choose Luxury
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ============ EVENTS ============ -->
+            <div class="pricing-group" data-service="Birthday / Event">
+                <div class="pricing-grid">
+
+                    <div class="price-card">
+                        <div class="price-tier">Basic</div>
+                        <h3>Essentials</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹6,999</span>
+                            <span class="period">/ event</span>
+                        </div>
+                        <p class="price-note">
+                            Ideal for birthdays & small parties
+                        </p>
+                        <ul class="price-features">
+                            <li>2 Hours coverage</li>
+                            <li>1 Photographer</li>
+                            <li>60+ Edited photos</li>
+                            <li>Delivery in 7 days</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Birthday / Event','Basic')">
+                            Choose Basic
+                        </a>
+                    </div>
+
+                    <div class="price-card featured">
+                        <div class="price-badge">Most Popular</div>
+                        <div class="price-tier">Premium</div>
+                        <h3>Signature</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹13,999</span>
+                            <span class="period">/ event</span>
+                        </div>
+                        <p class="price-note">
+                            Great for college fests & corporate events
+                        </p>
+                        <ul class="price-features">
+                            <li>4 Hours coverage</li>
+                            <li>2 Photographers</li>
+                            <li>120+ Edited photos</li>
+                            <li>Highlight reel</li>
+                        </ul>
+                        <a class="btn btn-gold" href="#contact"
+                           onclick="selectPackage('Birthday / Event','Premium')">
+                            Choose Premium
+                        </a>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="price-tier">Luxury</div>
+                        <h3>Grand Celebration</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹24,999</span>
+                            <span class="period">/ event</span>
+                        </div>
+                        <p class="price-note">
+                            Full-scale event coverage, start to finish
+                        </p>
+                        <ul class="price-features">
+                            <li>Full event coverage</li>
+                            <li>3 Photographers</li>
+                            <li>200+ Edited photos</li>
+                            <li>Same-day highlight reel</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Birthday / Event','Luxury')">
+                            Choose Luxury
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ============ BABY & FAMILY ============ -->
+            <div class="pricing-group" data-service="Baby & Family">
+                <div class="pricing-grid">
+
+                    <div class="price-card">
+                        <div class="price-tier">Basic</div>
+                        <h3>Essentials</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹4,999</span>
+                            <span class="period">/ session</span>
+                        </div>
+                        <p class="price-note">
+                            Simple studio session
+                        </p>
+                        <ul class="price-features">
+                            <li>1 Hour session</li>
+                            <li>Studio setup</li>
+                            <li>30+ Edited photos</li>
+                            <li>Online gallery</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Baby & Family','Basic')">
+                            Choose Basic
+                        </a>
+                    </div>
+
+                    <div class="price-card featured">
+                        <div class="price-badge">Most Popular</div>
+                        <div class="price-tier">Premium</div>
+                        <h3>Signature</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹8,999</span>
+                            <span class="period">/ session</span>
+                        </div>
+                        <p class="price-note">
+                            Studio and outdoor combined
+                        </p>
+                        <ul class="price-features">
+                            <li>2 Hour session</li>
+                            <li>Studio + outdoor</li>
+                            <li>60+ Edited photos</li>
+                            <li>Printed photos included</li>
+                        </ul>
+                        <a class="btn btn-gold" href="#contact"
+                           onclick="selectPackage('Baby & Family','Premium')">
+                            Choose Premium
+                        </a>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="price-tier">Luxury</div>
+                        <h3>Grand Celebration</h3>
+                        <div class="price-amount">
+                            <span class="amount">₹15,999</span>
+                            <span class="period">/ session</span>
+                        </div>
+                        <p class="price-note">
+                            Multiple themes for the whole family
+                        </p>
+                        <ul class="price-features">
+                            <li>Half day session</li>
+                            <li>Multiple outfits & themes</li>
+                            <li>100+ Edited photos</li>
+                            <li>Premium photo album</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact"
+                           onclick="selectPackage('Baby & Family','Luxury')">
+                            Choose Luxury
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
 
             <p class="packages-footnote">
                 * Prices shown are placeholders — final pricing may vary
@@ -2745,28 +3176,82 @@
         }
 
 
-        function selectPackage(packageName) {
+        function selectPackage(serviceName, packageName) {
 
             const select = document.getElementById("package");
+            const serviceSelect = document.getElementById("service");
 
             select.value = packageName;
+
+            if (serviceName) {
+                const match = Array.from(serviceSelect.options).find(
+                    (opt) => opt.value === serviceName
+                );
+                serviceSelect.value = match ? serviceName : "Other";
+            }
 
             // Scroll the booking form into view
             document
                 .getElementById("contact")
                 .scrollIntoView({ behavior: "smooth", block: "start" });
 
-            // Briefly highlight the dropdown so it's clear it auto-filled
+            // Briefly highlight the dropdowns so it's clear they auto-filled
             select.classList.add("highlight");
+            serviceSelect.classList.add("highlight");
 
             setTimeout(() => {
                 select.classList.remove("highlight");
+                serviceSelect.classList.remove("highlight");
             }, 1600);
 
             // Focus the name field after the scroll settles, ready to type
             setTimeout(() => {
                 document.getElementById("name").focus();
             }, 550);
+        }
+
+
+        /* =====================================================
+           PACKAGE PRICING TABS
+        ===================================================== */
+
+        const pkgTabs = document.querySelectorAll(".pkg-tab");
+        const pkgGroups = document.querySelectorAll(".pricing-group");
+
+        pkgTabs.forEach((tab) => {
+
+            tab.addEventListener("click", () => {
+
+                pkgTabs.forEach((t) => t.classList.remove("active"));
+                pkgGroups.forEach((g) => g.classList.remove("active"));
+
+                tab.classList.add("active");
+
+                const target = document.querySelector(
+                    `.pricing-group[data-service="${tab.dataset.service}"]`
+                );
+
+                if (target) {
+                    target.classList.add("active");
+                }
+            });
+
+        });
+
+        // Jump a service card straight to its pricing tab
+        function showPackagesFor(serviceName) {
+
+            const tab = Array.from(pkgTabs).find(
+                (t) => t.dataset.service === serviceName
+            );
+
+            if (tab) {
+                tab.click();
+            }
+
+            document
+                .getElementById("packages")
+                .scrollIntoView({ behavior: "smooth", block: "start" });
         }
 
 
