@@ -11,6 +11,23 @@
         content="Rithik Photography - premium wedding, portrait, birthday, baby and event photography. Timeless memories, beautifully captured."
     >
 
+    <meta name="theme-color" content="#050505">
+
+    <!-- Favicon (gold "R" mark, inline SVG — no image file needed) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23050505'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23d4af37' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Rithik Photography | Luxury Photography">
+    <meta property="og:description" content="Premium wedding, portrait, birthday, baby and event photography in M.Puthur, Tamil Nadu. Timeless memories, beautifully captured.">
+    <meta property="og:image" content="image/rithik Photograpthy bg.png">
+    <meta property="og:locale" content="en_IN">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rithik Photography | Luxury Photography">
+    <meta name="twitter:description" content="Premium wedding, portrait, birthday, baby and event photography. Timeless memories, beautifully captured.">
+    <meta name="twitter:image" content="image/rithik Photograpthy bg.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -18,6 +35,32 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"
     >
+
+    <!-- LocalBusiness structured data for search engines -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Rithik Photography",
+        "image": "image/rithik Photograpthy bg.png",
+        "telephone": "+918526602777",
+        "email": "rithikphotography19@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "X7GM+F6, M.Puthur",
+            "addressRegion": "Tamil Nadu",
+            "postalCode": "621203",
+            "addressCountry": "IN"
+        },
+        "url": "",
+        "sameAs": [
+            "https://www.instagram.com/rithik_photography19/",
+            "https://www.youtube.com/@rithik_photography19"
+        ],
+        "openingHours": "Mo-Su 09:00-22:00",
+        "priceRange": "₹₹"
+    }
+    </script>
 
     <style>
         /* =========================================================
@@ -886,6 +929,61 @@
             margin-top: 30px;
         }
 
+        .gallery-tabs {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-bottom: 34px;
+        }
+
+        .gallery-tab {
+            padding: 10px 20px;
+
+            border: 1px solid rgba(255, 255, 255, .16);
+
+            border-radius: 30px;
+
+            background: rgba(255, 255, 255, .04);
+
+            color: #ddd;
+
+            font-size: .74rem;
+
+            letter-spacing: .06em;
+
+            text-transform: uppercase;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .gallery-tab:hover {
+            border-color: var(--gold);
+
+            color: var(--gold2);
+        }
+
+        .gallery-tab.active {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--gold3),
+                    var(--gold)
+                );
+
+            color: #090909;
+
+            border-color: var(--gold);
+        }
+
         .gallery-wrap {
             position: relative;
         }
@@ -1115,6 +1213,108 @@
 
 
         /* =========================================================
+           FAQ
+        ========================================================= */
+
+        .faq {
+            background: #050505;
+        }
+
+        .faq-list {
+            max-width: 780px;
+
+            margin: auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .faq-item {
+            border:
+                1px solid rgba(255, 255, 255, .09);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255, 255, 255, .03);
+
+            overflow: hidden;
+
+            transition: border-color .3s;
+        }
+
+        .faq-item.open {
+            border-color: var(--line);
+        }
+
+        .faq-question {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 14px;
+
+            padding: 20px 22px;
+
+            cursor: pointer;
+
+            color: #fff;
+
+            font-size: .96rem;
+
+            font-weight: 600;
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+
+            width: 24px;
+
+            height: 24px;
+
+            display: grid;
+
+            place-items: center;
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 50%;
+
+            color: var(--gold2);
+
+            font-size: 1rem;
+
+            transition: transform .3s;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+
+            overflow: hidden;
+
+            transition: max-height .35s ease;
+        }
+
+        .faq-answer p {
+            padding: 0 22px 20px;
+
+            color: var(--muted);
+
+            font-size: .88rem;
+        }
+
+
+        /* =========================================================
            CONTACT
         ========================================================= */
 
@@ -1238,6 +1438,12 @@
             color: #111;
         }
 
+        .youtube {
+            background: #ff0000;
+
+            color: #fff;
+        }
+
         .contact-button-row {
             display: flex;
 
@@ -1317,12 +1523,71 @@
         }
 
         select.highlight,
-        select.highlight:focus {
+        select.highlight:focus,
+        input.highlight,
+        input.highlight:focus {
             border-color: var(--gold);
 
             box-shadow:
                 0 0 0 4px
                 rgba(212, 175, 55, .22);
+        }
+
+        input[readonly] {
+            color: var(--gold2);
+            font-weight: 600;
+            cursor: default;
+        }
+
+        .advance-hint {
+            color: var(--muted);
+            font-size: .76rem;
+            margin: -9px 0 13px;
+        }
+
+        .pay-advance-row {
+            display: none;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 4px 0 18px;
+
+            padding: 20px;
+
+            border: 1px solid var(--line);
+
+            border-radius: 12px;
+
+            background: rgba(212, 175, 55, .06);
+
+            text-align: center;
+        }
+
+        .pay-advance-row.show {
+            display: flex;
+        }
+
+        .pay-advance-row .btn {
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .pay-advance-row img {
+            width: 140px;
+            height: 140px;
+            border-radius: 8px;
+            background: #fff;
+            padding: 6px;
+        }
+
+        .upi-note {
+            color: var(--muted);
+            font-size: .76rem;
+            max-width: 320px;
         }
 
         .date-error {
@@ -1831,6 +2096,14 @@
                     Instagram
                 </a>
 
+                <a
+                    href="https://www.youtube.com/@rithik_photography19"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    YouTube
+                </a>
+
             </nav>
 
             <button
@@ -2128,481 +2401,11 @@
 
 
             <div class="pkg-tabs" id="pkgTabs">
-
-                <button class="pkg-tab active" data-service="Wedding">
-                    Wedding
-                </button>
-
-                <button class="pkg-tab" data-service="Stage Decoration">
-                    Stage Decoration
-                </button>
-
-                <button class="pkg-tab" data-service="Sound System">
-                    Sound System
-                </button>
-
-                <button class="pkg-tab" data-service="Portrait">
-                    Portraits
-                </button>
-
-                <button class="pkg-tab" data-service="Birthday / Event">
-                    Events
-                </button>
-
-                <button class="pkg-tab" data-service="Baby & Family">
-                    Baby & Family
-                </button>
-
+                <!-- Tabs are rendered automatically from the pricing data below -->
             </div>
 
-
-            <!-- ============ WEDDING ============ -->
-            <div class="pricing-group active" data-service="Wedding">
-                <div class="pricing-grid">
-
-                    <div class="price-card">
-                        <div class="price-tier">Basic</div>
-                        <h3>Essentials</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹14,999</span>
-                            <span class="period">/ shoot</span>
-                        </div>
-                        <p class="price-note">
-                            Simple coverage for intimate weddings
-                        </p>
-                        <ul class="price-features">
-                            <li>4 Hours coverage</li>
-                            <li>1 Photographer</li>
-                            <li>100+ Edited photos</li>
-                            <li>Delivery in 10 days</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Wedding','Basic')">
-                            Choose Basic
-                        </a>
-                    </div>
-
-                    <div class="price-card featured">
-                        <div class="price-badge">Most Popular</div>
-                        <div class="price-tier">Premium</div>
-                        <h3>Signature</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹29,999</span>
-                            <span class="period">/ shoot</span>
-                        </div>
-                        <p class="price-note">
-                            Full-day coverage with a highlight film
-                        </p>
-                        <ul class="price-features">
-                            <li>8 Hours coverage</li>
-                            <li>2 Photographers</li>
-                            <li>250+ Edited photos</li>
-                            <li>Highlight film</li>
-                        </ul>
-                        <a class="btn btn-gold" href="#contact"
-                           onclick="selectPackage('Wedding','Premium')">
-                            Choose Premium
-                        </a>
-                    </div>
-
-                    <div class="price-card">
-                        <div class="price-tier">Luxury</div>
-                        <h3>Grand Celebration</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹59,999</span>
-                            <span class="period">/ shoot</span>
-                        </div>
-                        <p class="price-note">
-                            Complete pre-wedding to reception coverage
-                        </p>
-                        <ul class="price-features">
-                            <li>Full day + pre-wedding</li>
-                            <li>3 Photographers + drone</li>
-                            <li>400+ Edited photos</li>
-                            <li>Cinematic film + album</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Wedding','Luxury')">
-                            Choose Luxury
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- ============ STAGE DECORATION ============ -->
-            <div class="pricing-group" data-service="Stage Decoration">
-                <div class="pricing-grid">
-
-                    <div class="price-card">
-                        <div class="price-tier">Basic</div>
-                        <h3>Essentials</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹7,999</span>
-                            <span class="period">/ event</span>
-                        </div>
-                        <p class="price-note">
-                            Clean, simple stage backdrop
-                        </p>
-                        <ul class="price-features">
-                            <li>Simple floral backdrop</li>
-                            <li>Basic lighting</li>
-                            <li>Setup & teardown</li>
-                            <li>1 Day rental</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Stage Decoration','Basic')">
-                            Choose Basic
-                        </a>
-                    </div>
-
-                    <div class="price-card featured">
-                        <div class="price-badge">Most Popular</div>
-                        <div class="price-tier">Premium</div>
-                        <h3>Signature</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹15,999</span>
-                            <span class="period">/ event</span>
-                        </div>
-                        <p class="price-note">
-                            Themed decor with an entry arch
-                        </p>
-                        <ul class="price-features">
-                            <li>Themed backdrop design</li>
-                            <li>LED accent lighting</li>
-                            <li>Entry arch included</li>
-                            <li>1 Day rental</li>
-                        </ul>
-                        <a class="btn btn-gold" href="#contact"
-                           onclick="selectPackage('Stage Decoration','Premium')">
-                            Choose Premium
-                        </a>
-                    </div>
-
-                    <div class="price-card">
-                        <div class="price-tier">Luxury</div>
-                        <h3>Grand Celebration</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹27,999</span>
-                            <span class="period">/ event</span>
-                        </div>
-                        <p class="price-note">
-                            Premium drapes with a custom photo wall
-                        </p>
-                        <ul class="price-features">
-                            <li>Premium floral + fabric drapes</li>
-                            <li>Full stage lighting design</li>
-                            <li>Custom entry & photo wall</li>
-                            <li>2 Day rental</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Stage Decoration','Luxury')">
-                            Choose Luxury
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- ============ SOUND SYSTEM ============ -->
-            <div class="pricing-group" data-service="Sound System">
-                <div class="pricing-grid">
-
-                    <div class="price-card">
-                        <div class="price-tier">Basic</div>
-                        <h3>Essentials</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹4,999</span>
-                            <span class="period">/ event</span>
-                        </div>
-                        <p class="price-note">
-                            Small gatherings & indoor functions
-                        </p>
-                        <ul class="price-features">
-                            <li>2 Speakers + mixer</li>
-                            <li>1 Wireless mic</li>
-                            <li>Basic setup</li>
-                            <li>Half-day rental</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Sound System','Basic')">
-                            Choose Basic
-                        </a>
-                    </div>
-
-                    <div class="price-card featured">
-                        <div class="price-badge">Most Popular</div>
-                        <div class="price-tier">Premium</div>
-                        <h3>Signature</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹9,999</span>
-                            <span class="period">/ event</span>
-                        </div>
-                        <p class="price-note">
-                            Full sound with DJ console
-                        </p>
-                        <ul class="price-features">
-                            <li>4 Speakers + subwoofer</li>
-                            <li>2 Wireless mics</li>
-                            <li>DJ console</li>
-                            <li>Full-day rental</li>
-                        </ul>
-                        <a class="btn btn-gold" href="#contact"
-                           onclick="selectPackage('Sound System','Premium')">
-                            Choose Premium
-                        </a>
-                    </div>
-
-                    <div class="price-card">
-                        <div class="price-tier">Luxury</div>
-                        <h3>Grand Celebration</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹17,999</span>
-                            <span class="period">/ event</span>
-                        </div>
-                        <p class="price-note">
-                            Full PA setup with a dedicated operator
-                        </p>
-                        <ul class="price-features">
-                            <li>Full PA system</li>
-                            <li>4 Wireless mics</li>
-                            <li>DJ + operator included</li>
-                            <li>Full event coverage</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Sound System','Luxury')">
-                            Choose Luxury
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- ============ PORTRAITS ============ -->
-            <div class="pricing-group" data-service="Portrait">
-                <div class="pricing-grid">
-
-                    <div class="price-card">
-                        <div class="price-tier">Basic</div>
-                        <h3>Essentials</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹3,999</span>
-                            <span class="period">/ session</span>
-                        </div>
-                        <p class="price-note">
-                            Quick single-location session
-                        </p>
-                        <ul class="price-features">
-                            <li>1 Hour session</li>
-                            <li>1 Location</li>
-                            <li>20+ Edited photos</li>
-                            <li>Online gallery</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Portrait','Basic')">
-                            Choose Basic
-                        </a>
-                    </div>
-
-                    <div class="price-card featured">
-                        <div class="price-badge">Most Popular</div>
-                        <div class="price-tier">Premium</div>
-                        <h3>Signature</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹7,999</span>
-                            <span class="period">/ session</span>
-                        </div>
-                        <p class="price-note">
-                            More locations, more looks
-                        </p>
-                        <ul class="price-features">
-                            <li>2 Hour session</li>
-                            <li>2 Locations</li>
-                            <li>50+ Edited photos</li>
-                            <li>Outfit changes</li>
-                        </ul>
-                        <a class="btn btn-gold" href="#contact"
-                           onclick="selectPackage('Portrait','Premium')">
-                            Choose Premium
-                        </a>
-                    </div>
-
-                    <div class="price-card">
-                        <div class="price-tier">Luxury</div>
-                        <h3>Grand Celebration</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹14,999</span>
-                            <span class="period">/ session</span>
-                        </div>
-                        <p class="price-note">
-                            A full editorial-style shoot day
-                        </p>
-                        <ul class="price-features">
-                            <li>Half day session</li>
-                            <li>Multiple locations</li>
-                            <li>100+ Edited photos</li>
-                            <li>Printed photo album</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Portrait','Luxury')">
-                            Choose Luxury
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- ============ EVENTS ============ -->
-            <div class="pricing-group" data-service="Birthday / Event">
-                <div class="pricing-grid">
-
-                    <div class="price-card">
-                        <div class="price-tier">Basic</div>
-                        <h3>Essentials</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹6,999</span>
-                            <span class="period">/ event</span>
-                        </div>
-                        <p class="price-note">
-                            Ideal for birthdays & small parties
-                        </p>
-                        <ul class="price-features">
-                            <li>2 Hours coverage</li>
-                            <li>1 Photographer</li>
-                            <li>60+ Edited photos</li>
-                            <li>Delivery in 7 days</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Birthday / Event','Basic')">
-                            Choose Basic
-                        </a>
-                    </div>
-
-                    <div class="price-card featured">
-                        <div class="price-badge">Most Popular</div>
-                        <div class="price-tier">Premium</div>
-                        <h3>Signature</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹13,999</span>
-                            <span class="period">/ event</span>
-                        </div>
-                        <p class="price-note">
-                            Great for college fests & corporate events
-                        </p>
-                        <ul class="price-features">
-                            <li>4 Hours coverage</li>
-                            <li>2 Photographers</li>
-                            <li>120+ Edited photos</li>
-                            <li>Highlight reel</li>
-                        </ul>
-                        <a class="btn btn-gold" href="#contact"
-                           onclick="selectPackage('Birthday / Event','Premium')">
-                            Choose Premium
-                        </a>
-                    </div>
-
-                    <div class="price-card">
-                        <div class="price-tier">Luxury</div>
-                        <h3>Grand Celebration</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹24,999</span>
-                            <span class="period">/ event</span>
-                        </div>
-                        <p class="price-note">
-                            Full-scale event coverage, start to finish
-                        </p>
-                        <ul class="price-features">
-                            <li>Full event coverage</li>
-                            <li>3 Photographers</li>
-                            <li>200+ Edited photos</li>
-                            <li>Same-day highlight reel</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Birthday / Event','Luxury')">
-                            Choose Luxury
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <!-- ============ BABY & FAMILY ============ -->
-            <div class="pricing-group" data-service="Baby & Family">
-                <div class="pricing-grid">
-
-                    <div class="price-card">
-                        <div class="price-tier">Basic</div>
-                        <h3>Essentials</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹4,999</span>
-                            <span class="period">/ session</span>
-                        </div>
-                        <p class="price-note">
-                            Simple studio session
-                        </p>
-                        <ul class="price-features">
-                            <li>1 Hour session</li>
-                            <li>Studio setup</li>
-                            <li>30+ Edited photos</li>
-                            <li>Online gallery</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Baby & Family','Basic')">
-                            Choose Basic
-                        </a>
-                    </div>
-
-                    <div class="price-card featured">
-                        <div class="price-badge">Most Popular</div>
-                        <div class="price-tier">Premium</div>
-                        <h3>Signature</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹8,999</span>
-                            <span class="period">/ session</span>
-                        </div>
-                        <p class="price-note">
-                            Studio and outdoor combined
-                        </p>
-                        <ul class="price-features">
-                            <li>2 Hour session</li>
-                            <li>Studio + outdoor</li>
-                            <li>60+ Edited photos</li>
-                            <li>Printed photos included</li>
-                        </ul>
-                        <a class="btn btn-gold" href="#contact"
-                           onclick="selectPackage('Baby & Family','Premium')">
-                            Choose Premium
-                        </a>
-                    </div>
-
-                    <div class="price-card">
-                        <div class="price-tier">Luxury</div>
-                        <h3>Grand Celebration</h3>
-                        <div class="price-amount">
-                            <span class="amount">₹15,999</span>
-                            <span class="period">/ session</span>
-                        </div>
-                        <p class="price-note">
-                            Multiple themes for the whole family
-                        </p>
-                        <ul class="price-features">
-                            <li>Half day session</li>
-                            <li>Multiple outfits & themes</li>
-                            <li>100+ Edited photos</li>
-                            <li>Premium photo album</li>
-                        </ul>
-                        <a class="btn btn-outline" href="#contact"
-                           onclick="selectPackage('Baby & Family','Luxury')">
-                            Choose Luxury
-                        </a>
-                    </div>
-
-                </div>
+            <div id="pricingGroups">
+                <!-- Pricing cards are rendered automatically from pricingData.js -->
             </div>
 
 
@@ -2642,83 +2445,121 @@
             </div>
 
 
+            <div class="gallery-tabs" id="galleryTabs">
+
+                <button class="gallery-tab active" data-category="all">
+                    All
+                </button>
+
+                <button class="gallery-tab" data-category="wedding">
+                    Wedding
+                </button>
+
+                <button class="gallery-tab" data-category="event">
+                    Events
+                </button>
+
+                <button class="gallery-tab" data-category="baby">
+                    Baby
+                </button>
+
+                <button class="gallery-tab" data-category="babyshower">
+                    Baby Shower
+                </button>
+
+            </div>
+
+
             <div class="gallery" id="photoGallery">
 
                 <img
                     src="image/036 copy.jpg"
                     alt="Wedding Photography"
+                    data-category="wedding"
                     onclick="openLightbox(0)"
                 >
 
                 <img
                     src="image/image (1).png"
                     alt="Wedding Photography"
+                    data-category="wedding"
                     onclick="openLightbox(1)"
                 >
 
                 <img
                     src="image/image (2).png"
                     alt="Wedding Photography"
+                    data-category="wedding"
                     onclick="openLightbox(2)"
                 >
 
                 <img
                     src="image/ear1 (1).jpg"
                     alt="Event Photography"
+                    data-category="event"
                     onclick="openLightbox(3)"
                 >
 
                 <img
                     src="image/ear2.png"
                     alt="Event Photography"
+                    data-category="event"
                     onclick="openLightbox(4)"
                 >
 
                 <img
                     src="image/ear3.jpg"
                     alt="Event Photography"
+                    data-category="event"
                     onclick="openLightbox(5)"
                 >
 
                 <img
                     src="image/ear4.jpg"
                     alt="Event Photography"
+                    data-category="event"
                     onclick="openLightbox(6)"
                 >
 
                 <img
                     src="image/ear5.jpg"
                     alt="Event Photography"
+                    data-category="event"
                     onclick="openLightbox(7)"
                 >
 
                 <img
                     src="image/babyshot1.jpg"
                     alt="Baby Photography"
+                    data-category="baby"
                     onclick="openLightbox(8)"
                 >
 
                 <img
                     src="image/babyshot2.jpg"
                     alt="Baby Photography"
+                    data-category="baby"
                     onclick="openLightbox(9)"
                 >
 
                 <img
                     src="image/babyshot3.jpg"
                     alt="Baby Photography"
+                    data-category="baby"
                     onclick="openLightbox(10)"
                 >
 
                 <img
                     src="image/babyshower1 (1).jpg"
                     alt="Baby Shower Photography"
+                    data-category="babyshower"
                     onclick="openLightbox(11)"
                 >
 
                 <img
                     src="image/babyshower1 (2).jpg"
                     alt="Baby Shower Photography"
+                    data-category="babyshower"
                     onclick="openLightbox(12)"
                 >
 
@@ -2848,6 +2689,127 @@
 
 
     <!-- =========================================================
+         FAQ
+    ========================================================= -->
+
+    <section class="faq" id="faq">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <div class="kicker">
+                    Good to Know
+                </div>
+
+                <h2>
+                    Frequently Asked
+                </h2>
+
+                <p>
+                    Common questions about booking, pricing and delivery.
+                </p>
+
+            </div>
+
+
+            <div class="faq-list" id="faqList">
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I book a shoot?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Pick a service and package above, fill in the
+                            booking form, and send it — it opens a WhatsApp
+                            message with your details pre-filled. We usually
+                            reply within a few hours to confirm your date.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you require an advance/deposit?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Yes, a booking advance is required to block your
+                            date, with the balance due on or before the day
+                            of the shoot. We'll share exact terms once you
+                            confirm your package on WhatsApp.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long until we receive our photos?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Delivery time depends on your package — typically
+                            3 to 10 days after the event. Luxury packages get
+                            priority editing and faster turnaround.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you travel outside M.Puthur / Tamil Nadu?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Yes, we take on-location and outstation shoots.
+                            Travel and accommodation charges apply beyond a
+                            certain distance — message us with your location
+                            for an exact quote.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do we get the raw/unedited photos too?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            We deliver a curated set of professionally edited
+                            photos as listed in your package. Raw files can
+                            be provided on request for an additional charge.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I customize a package?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Absolutely — Basic, Premium and Luxury are
+                            starting points. Message us your requirements
+                            and we'll put together a custom quote.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
          CONTACT
     ========================================================= -->
 
@@ -2958,6 +2920,15 @@
                             📸 Instagram
                         </a>
 
+                        <a
+                            class="btn youtube"
+                            href="https://www.youtube.com/@rithik_photography19"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            ▶️ YouTube
+                        </a>
+
                     </div>
 
                 </div>
@@ -3052,6 +3023,55 @@
                     </select>
 
 
+                    <label for="price">
+                        Price
+                    </label>
+
+                    <input
+                        id="price"
+                        readonly
+                        placeholder="Auto-filled when you pick a package"
+                    >
+
+
+                    <label for="advance">
+                        Advance to Book (₹)
+                    </label>
+
+                    <input
+                        id="advance"
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="Auto-suggested once you pick a package — edit if needed"
+                    >
+
+                    <p class="advance-hint" id="advanceHint"></p>
+
+                    <div class="pay-advance-row" id="payAdvanceRow">
+
+                        <a
+                            id="payAdvanceBtn"
+                            class="btn btn-gold"
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            💳 Pay Advance via UPI
+                        </a>
+
+                        <img
+                            id="upiQr"
+                            alt="Scan to pay the advance via UPI"
+                        >
+
+                        <p class="upi-note">
+                            Opens GPay / PhonePe / Paytm directly on mobile.
+                            On desktop, scan the QR code with your UPI app.
+                        </p>
+
+                    </div>
+
+
                     <label for="date">
                         Event Date
                     </label>
@@ -3116,6 +3136,16 @@
 
 
     <!-- =========================================================
+         PRICING DATA (edited from admin.html, no server needed)
+    ========================================================= -->
+    <script src="pricing-data.js"></script>
+    <script src="firebase-config.js"></script>
+
+    <!-- Firebase (only used if firebase-config.js has been filled in) -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
+    <!-- =========================================================
          JAVASCRIPT
     ========================================================= -->
 
@@ -3176,10 +3206,11 @@
         }
 
 
-        function selectPackage(serviceName, packageName) {
+        function selectPackage(serviceName, packageName, amount, period) {
 
             const select = document.getElementById("package");
             const serviceSelect = document.getElementById("service");
+            const priceInput = document.getElementById("price");
 
             select.value = packageName;
 
@@ -3190,18 +3221,28 @@
                 serviceSelect.value = match ? serviceName : "Other";
             }
 
+            // Auto-fill the price field from the chosen package's tier
+            if (amount) {
+                priceInput.value = period ? `${amount} ${period}` : amount;
+            }
+
+            // Auto-calculate the 20% advance and refresh the UPI pay button/QR
+            updateAdvance(amount);
+
             // Scroll the booking form into view
             document
                 .getElementById("contact")
                 .scrollIntoView({ behavior: "smooth", block: "start" });
 
-            // Briefly highlight the dropdowns so it's clear they auto-filled
+            // Briefly highlight the dropdowns/fields so it's clear they auto-filled
             select.classList.add("highlight");
             serviceSelect.classList.add("highlight");
+            priceInput.classList.add("highlight");
 
             setTimeout(() => {
                 select.classList.remove("highlight");
                 serviceSelect.classList.remove("highlight");
+                priceInput.classList.remove("highlight");
             }, 1600);
 
             // Focus the name field after the scroll settles, ready to type
@@ -3212,47 +3253,250 @@
 
 
         /* =====================================================
-           PACKAGE PRICING TABS
+           UPI ADVANCE PAYMENT (20% of package price)
+           ---------------------------------------------------
+           This uses a plain UPI deep link — no Razorpay account,
+           API keys, or backend server needed. It opens GPay /
+           PhonePe / Paytm directly with the amount pre-filled.
+           A QR code (generated via a free public QR API) is
+           shown too, so desktop visitors can scan with their phone.
+
+           ⚠️ REPLACE THESE TWO VALUES WITH YOUR REAL DETAILS:
         ===================================================== */
 
-        const pkgTabs = document.querySelectorAll(".pkg-tab");
-        const pkgGroups = document.querySelectorAll(".pricing-group");
+        const UPI_ID = "rithikphotography19@upi";       // <-- your real UPI ID (e.g. from GPay/PhonePe "My UPI ID")
+        const UPI_PAYEE_NAME = "Rithik Photography";     // <-- name that should show up in the payer's app
+        const ADVANCE_PERCENT = 0.20;                    // 20% advance
 
-        pkgTabs.forEach((tab) => {
+        // Pulls the numeric rupee value out of a price string like
+        // "₹15,000" or a range like "₹15,000 - ₹20,000" (averages ranges).
+        function parsePriceToNumber(amountStr) {
 
-            tab.addEventListener("click", () => {
+            if (!amountStr) return null;
 
-                pkgTabs.forEach((t) => t.classList.remove("active"));
-                pkgGroups.forEach((g) => g.classList.remove("active"));
+            const matches = String(amountStr).match(/[\d,]+/g);
 
-                tab.classList.add("active");
+            if (!matches || matches.length === 0) return null;
 
-                const target = document.querySelector(
-                    `.pricing-group[data-service="${tab.dataset.service}"]`
-                );
+            const numbers = matches.map((m) => parseInt(m.replace(/,/g, ""), 10));
 
-                if (target) {
-                    target.classList.add("active");
-                }
+            const sum = numbers.reduce((a, b) => a + b, 0);
+
+            return Math.round(sum / numbers.length);
+        }
+
+        function updateAdvance(amountStr) {
+
+            const advanceInput = document.getElementById("advance");
+            const hint = document.getElementById("advanceHint");
+
+            const basePrice = parsePriceToNumber(amountStr);
+
+            if (!basePrice) {
+                advanceInput.value = "";
+                hint.textContent = "";
+                refreshUpiPayment();
+                return;
+            }
+
+            const suggested = Math.round(basePrice * ADVANCE_PERCENT);
+
+            // Pre-fill a suggested 20% advance, but the client can edit it
+            advanceInput.value = suggested;
+
+            hint.textContent =
+                `Suggested 20% of ₹${basePrice.toLocaleString("en-IN")} = ₹${suggested.toLocaleString("en-IN")}. You can change this amount.`;
+
+            refreshUpiPayment();
+        }
+
+        // Rebuilds the UPI pay button + QR code from whatever amount is
+        // currently typed into the advance field (not just the suggested one).
+        function refreshUpiPayment() {
+
+            const advanceInput = document.getElementById("advance");
+            const payRow = document.getElementById("payAdvanceRow");
+            const payBtn = document.getElementById("payAdvanceBtn");
+            const qrImg = document.getElementById("upiQr");
+
+            const digitsOnly = advanceInput.value.replace(/[^\d]/g, "");
+            const advanceAmount = parseInt(digitsOnly, 10);
+
+            if (!advanceAmount || advanceAmount <= 0) {
+                payRow.classList.remove("show");
+                return;
+            }
+
+            const name = document.getElementById("name").value || "Client";
+            const service = document.getElementById("service").value || "Booking";
+            const note = `Advance for ${service} - ${name}`;
+
+            const upiUri =
+                `upi://pay?pa=${encodeURIComponent(UPI_ID)}` +
+                `&pn=${encodeURIComponent(UPI_PAYEE_NAME)}` +
+                `&am=${advanceAmount}` +
+                `&cu=INR` +
+                `&tn=${encodeURIComponent(note)}`;
+
+            payBtn.href = upiUri;
+
+            qrImg.src =
+                "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=" +
+                encodeURIComponent(upiUri);
+
+            payRow.classList.add("show");
+        }
+
+        // Rebuild the QR/link whenever the client edits the advance amount
+        document.getElementById("advance").addEventListener("input", refreshUpiPayment);
+
+
+        /* =====================================================
+           PACKAGE PRICING — RENDERED FROM pricing-data.js
+        ===================================================== */
+
+        const pkgTabsEl = document.getElementById("pkgTabs");
+        const pricingGroupsEl = document.getElementById("pricingGroups");
+
+        // RITHIK_PACKAGES comes from pricing-data.js (edited via admin.html)
+        const packagesData = (typeof RITHIK_PACKAGES !== "undefined")
+            ? RITHIK_PACKAGES
+            : [];
+
+        function renderPackages() {
+
+            pkgTabsEl.innerHTML = "";
+            pricingGroupsEl.innerHTML = "";
+
+            packagesData.forEach((service, index) => {
+
+                // --- Tab button ---
+                const tab = document.createElement("button");
+                tab.className = "pkg-tab" + (index === 0 ? " active" : "");
+                tab.dataset.service = service.name;
+                tab.textContent = service.name;
+                tab.addEventListener("click", () => activateService(service.name));
+                pkgTabsEl.appendChild(tab);
+
+                // --- Pricing group ---
+                const group = document.createElement("div");
+                group.className = "pricing-group" + (index === 0 ? " active" : "");
+                group.dataset.service = service.name;
+
+                const grid = document.createElement("div");
+                grid.className = "pricing-grid";
+
+                service.tiers.forEach((tier) => {
+
+                    const card = document.createElement("div");
+                    card.className = "price-card" + (tier.featured ? " featured" : "");
+
+                    let badgeHtml = "";
+                    if (tier.featured && tier.badge) {
+                        badgeHtml = `<div class="price-badge">${escapeHtml(tier.badge)}</div>`;
+                    }
+
+                    const featuresHtml = (tier.features || [])
+                        .map((f) => `<li>${escapeHtml(f)}</li>`)
+                        .join("");
+
+                    card.innerHTML = `
+                        ${badgeHtml}
+                        <div class="price-tier">${escapeHtml(tier.tier)}</div>
+                        <h3>${escapeHtml(tier.title)}</h3>
+                        <div class="price-amount">
+                            <span class="amount">${escapeHtml(tier.amount)}</span>
+                            <span class="period">${escapeHtml(tier.period)}</span>
+                        </div>
+                        <p class="price-note">${escapeHtml(tier.note)}</p>
+                        <ul class="price-features">${featuresHtml}</ul>
+                    `;
+
+                    const btn = document.createElement("a");
+                    btn.className = "btn " + (tier.featured ? "btn-gold" : "btn-outline");
+                    btn.href = "#contact";
+                    btn.textContent = "Choose " + tier.tier;
+                    btn.addEventListener("click", () =>
+                        selectPackage(service.name, tier.tier, tier.amount, tier.period)
+                    );
+
+                    card.appendChild(btn);
+                    grid.appendChild(card);
+                });
+
+                group.appendChild(grid);
+                pricingGroupsEl.appendChild(group);
+            });
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement("div");
+            div.textContent = str == null ? "" : String(str);
+            return div.innerHTML;
+        }
+
+        function activateService(serviceName) {
+
+            document.querySelectorAll(".pkg-tab").forEach((t) => {
+                t.classList.toggle("active", t.dataset.service === serviceName);
             });
 
-        });
+            document.querySelectorAll(".pricing-group").forEach((g) => {
+                g.classList.toggle("active", g.dataset.service === serviceName);
+            });
+        }
 
         // Jump a service card straight to its pricing tab
         function showPackagesFor(serviceName) {
 
-            const tab = Array.from(pkgTabs).find(
-                (t) => t.dataset.service === serviceName
-            );
-
-            if (tab) {
-                tab.click();
-            }
+            activateService(serviceName);
 
             document
                 .getElementById("packages")
                 .scrollIntoView({ behavior: "smooth", block: "start" });
         }
+
+        renderPackages();
+
+        /* =====================================================
+           LIVE PRICING — pulled from Firebase if it's set up
+           (falls back to the defaults above if not, or if the
+           site is offline / Firebase hasn't been configured yet)
+        ===================================================== */
+
+        async function loadLivePricing() {
+
+            if (typeof FIREBASE_CONFIGURED === "undefined" || !FIREBASE_CONFIGURED) {
+                return; // admin hasn't finished setup yet — keep defaults
+            }
+
+            try {
+                if (!firebase.apps.length) {
+                    firebase.initializeApp(FIREBASE_CONFIG);
+                }
+
+                const db = firebase.firestore();
+                const snapshot = await db.collection("packages").orderBy("order").get();
+
+                if (snapshot.empty) {
+                    return; // nothing saved yet — keep defaults
+                }
+
+                const live = [];
+                snapshot.forEach((doc) => live.push(doc.data()));
+
+                packagesData.length = 0;
+                packagesData.push(...live);
+                renderPackages();
+
+            } catch (err) {
+                // Any failure (offline, not set up, permissions) —
+                // silently keep showing the default pricing.
+                console.warn("Live pricing unavailable, showing defaults.", err);
+            }
+        }
+
+        loadLivePricing();
 
 
         /* =====================================================
@@ -3331,6 +3575,69 @@
             }
 
             clearDateError();
+        });
+
+
+        // If the shopper manually changes the package dropdown (instead
+        // of clicking "Choose" on a pricing card), look up the matching
+        // tier's price automatically too.
+        document.getElementById("package").addEventListener("change", () => {
+
+            const serviceName = document.getElementById("service").value;
+            const packageName = document.getElementById("package").value;
+            const priceInput = document.getElementById("price");
+
+            if (!packageName) {
+                priceInput.value = "";
+                return;
+            }
+
+            const service = packagesData.find((s) => s.name === serviceName);
+            const tier = service && service.tiers.find((t) => t.tier === packageName);
+
+            if (tier) {
+                priceInput.value = tier.period
+                    ? `${tier.amount} ${tier.period}`
+                    : tier.amount;
+                updateAdvance(tier.amount);
+            } else {
+                priceInput.value = "";
+                updateAdvance(null);
+            }
+        });
+
+
+        /* =====================================================
+           FAQ ACCORDION
+        ===================================================== */
+
+        document.querySelectorAll(".faq-item").forEach((item) => {
+
+            const question = item.querySelector(".faq-question");
+            const answer = item.querySelector(".faq-answer");
+
+            question.addEventListener("click", () => {
+
+                const isOpen = item.classList.contains("open");
+
+                // Close all other open items
+                document.querySelectorAll(".faq-item.open").forEach((open) => {
+                    if (open !== item) {
+                        open.classList.remove("open");
+                        open.querySelector(".faq-answer").style.maxHeight = null;
+                    }
+                });
+
+                if (isOpen) {
+                    item.classList.remove("open");
+                    answer.style.maxHeight = null;
+                } else {
+                    item.classList.add("open");
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+
+            });
+
         });
 
 
@@ -3453,6 +3760,19 @@
                     document.getElementById("package").value ||
                     "Not selected";
 
+                const price =
+                    document.getElementById("price").value ||
+                    "Not specified";
+
+                const advanceRaw =
+                    document.getElementById("advance").value;
+
+                const advanceDigits = advanceRaw.replace(/[^\d]/g, "");
+
+                const advance = advanceDigits
+                    ? `₹${parseInt(advanceDigits, 10).toLocaleString("en-IN")}`
+                    : "Not specified";
+
                 const date =
                     document.getElementById("date").value ||
                     "Not specified";
@@ -3469,6 +3789,8 @@ Name: ${name}
 Phone: ${phone}
 Service: ${service}
 Package: ${packageChoice}
+Price: ${price}
+Advance to Pay: ${advance}
 Event Date: ${date}
 Message: ${message}`;
 
