@@ -1484,51 +1484,6 @@
             cursor: default;
         }
 
-        .pay-advance-row {
-            display: none;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            gap: 12px;
-
-            margin: 4px 0 18px;
-
-            padding: 20px;
-
-            border: 1px solid var(--line);
-
-            border-radius: 12px;
-
-            background: rgba(212, 175, 55, .06);
-
-            text-align: center;
-        }
-
-        .pay-advance-row.show {
-            display: flex;
-        }
-
-        .pay-advance-row .btn {
-            width: 100%;
-            max-width: 320px;
-        }
-
-        .pay-advance-row img {
-            width: 140px;
-            height: 140px;
-            border-radius: 8px;
-            background: #fff;
-            padding: 6px;
-        }
-
-        .upi-note {
-            color: var(--muted);
-            font-size: .76rem;
-            max-width: 320px;
-        }
-
         .date-error {
             display: none;
 
@@ -2935,41 +2890,6 @@
                     >
 
 
-                    <label for="advance">
-                        Advance to Book (20%)
-                    </label>
-
-                    <input
-                        id="advance"
-                        readonly
-                        placeholder="Auto-calculated once you pick a package"
-                    >
-
-                    <div class="pay-advance-row" id="payAdvanceRow">
-
-                        <a
-                            id="payAdvanceBtn"
-                            class="btn btn-gold"
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            💳 Pay Advance via UPI
-                        </a>
-
-                        <img
-                            id="upiQr"
-                            alt="Scan to pay the advance via UPI"
-                        >
-
-                        <p class="upi-note">
-                            Opens GPay / PhonePe / Paytm directly on mobile.
-                            On desktop, scan the QR code with your UPI app.
-                        </p>
-
-                    </div>
-
-
                     <label for="date">
                         Event Date
                     </label>
@@ -3124,9 +3044,6 @@
                 priceInput.value = period ? `${amount} ${period}` : amount;
             }
 
-            // Auto-calculate the 20% advance and refresh the UPI pay button/QR
-            updateAdvance(amount);
-
             // Scroll the booking form into view
             document
                 .getElementById("contact")
@@ -3147,79 +3064,6 @@
             setTimeout(() => {
                 document.getElementById("name").focus();
             }, 550);
-        }
-
-
-        /* =====================================================
-           UPI ADVANCE PAYMENT (20% of package price)
-           ---------------------------------------------------
-           This uses a plain UPI deep link — no Razorpay account,
-           API keys, or backend server needed. It opens GPay /
-           PhonePe / Paytm directly with the amount pre-filled.
-           A QR code (generated via a free public QR API) is
-           shown too, so desktop visitors can scan with their phone.
-
-           ⚠️ REPLACE THESE TWO VALUES WITH YOUR REAL DETAILS:
-        ===================================================== */
-
-        const UPI_ID = "rithikphotography19@upi";       // <-- your real UPI ID (e.g. from GPay/PhonePe "My UPI ID")
-        const UPI_PAYEE_NAME = "Rithik Photography";     // <-- name that should show up in the payer's app
-        const ADVANCE_PERCENT = 0.20;                    // 20% advance
-
-        // Pulls the numeric rupee value out of a price string like
-        // "₹15,000" or a range like "₹15,000 - ₹20,000" (averages ranges).
-        function parsePriceToNumber(amountStr) {
-
-            if (!amountStr) return null;
-
-            const matches = String(amountStr).match(/[\d,]+/g);
-
-            if (!matches || matches.length === 0) return null;
-
-            const numbers = matches.map((m) => parseInt(m.replace(/,/g, ""), 10));
-
-            const sum = numbers.reduce((a, b) => a + b, 0);
-
-            return Math.round(sum / numbers.length);
-        }
-
-        function updateAdvance(amountStr) {
-
-            const advanceInput = document.getElementById("advance");
-            const payRow = document.getElementById("payAdvanceRow");
-            const payBtn = document.getElementById("payAdvanceBtn");
-            const qrImg = document.getElementById("upiQr");
-
-            const basePrice = parsePriceToNumber(amountStr);
-
-            if (!basePrice) {
-                advanceInput.value = "";
-                payRow.classList.remove("show");
-                return;
-            }
-
-            const advanceAmount = Math.round(basePrice * ADVANCE_PERCENT);
-
-            advanceInput.value = `₹${advanceAmount.toLocaleString("en-IN")} (20% of ₹${basePrice.toLocaleString("en-IN")})`;
-
-            const name = document.getElementById("name").value || "Client";
-            const service = document.getElementById("service").value || "Booking";
-            const note = `Advance for ${service} - ${name}`;
-
-            const upiUri =
-                `upi://pay?pa=${encodeURIComponent(UPI_ID)}` +
-                `&pn=${encodeURIComponent(UPI_PAYEE_NAME)}` +
-                `&am=${advanceAmount}` +
-                `&cu=INR` +
-                `&tn=${encodeURIComponent(note)}`;
-
-            payBtn.href = upiUri;
-
-            qrImg.src =
-                "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=" +
-                encodeURIComponent(upiUri);
-
-            payRow.classList.add("show");
         }
 
 
@@ -3471,10 +3315,8 @@
                 priceInput.value = tier.period
                     ? `${tier.amount} ${tier.period}`
                     : tier.amount;
-                updateAdvance(tier.amount);
             } else {
                 priceInput.value = "";
-                updateAdvance(null);
             }
         });
 
@@ -3636,10 +3478,6 @@
                     document.getElementById("price").value ||
                     "Not specified";
 
-                const advance =
-                    document.getElementById("advance").value ||
-                    "Not specified";
-
                 const date =
                     document.getElementById("date").value ||
                     "Not specified";
@@ -3657,7 +3495,6 @@ Phone: ${phone}
 Service: ${service}
 Package: ${packageChoice}
 Price: ${price}
-Advance (20%): ${advance}
 Event Date: ${date}
 Message: ${message}`;
 
