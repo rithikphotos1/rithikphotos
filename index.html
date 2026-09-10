@@ -929,6 +929,61 @@
             margin-top: 30px;
         }
 
+        .gallery-tabs {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-bottom: 34px;
+        }
+
+        .gallery-tab {
+            padding: 10px 20px;
+
+            border: 1px solid rgba(255, 255, 255, .16);
+
+            border-radius: 30px;
+
+            background: rgba(255, 255, 255, .04);
+
+            color: #ddd;
+
+            font-size: .74rem;
+
+            letter-spacing: .06em;
+
+            text-transform: uppercase;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .gallery-tab:hover {
+            border-color: var(--gold);
+
+            color: var(--gold2);
+        }
+
+        .gallery-tab.active {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--gold3),
+                    var(--gold)
+                );
+
+            color: #090909;
+
+            border-color: var(--gold);
+        }
+
         .gallery-wrap {
             position: relative;
         }
@@ -1482,6 +1537,12 @@
             color: var(--gold2);
             font-weight: 600;
             cursor: default;
+        }
+
+        .advance-hint {
+            color: var(--muted);
+            font-size: .76rem;
+            margin: -9px 0 13px;
         }
 
         .pay-advance-row {
@@ -2384,83 +2445,121 @@
             </div>
 
 
+            <div class="gallery-tabs" id="galleryTabs">
+
+                <button class="gallery-tab active" data-category="all">
+                    All
+                </button>
+
+                <button class="gallery-tab" data-category="wedding">
+                    Wedding
+                </button>
+
+                <button class="gallery-tab" data-category="event">
+                    Events
+                </button>
+
+                <button class="gallery-tab" data-category="baby">
+                    Baby
+                </button>
+
+                <button class="gallery-tab" data-category="babyshower">
+                    Baby Shower
+                </button>
+
+            </div>
+
+
             <div class="gallery" id="photoGallery">
 
                 <img
                     src="image/036 copy.jpg"
                     alt="Wedding Photography"
+                    data-category="wedding"
                     onclick="openLightbox(0)"
                 >
 
                 <img
                     src="image/image (1).png"
                     alt="Wedding Photography"
+                    data-category="wedding"
                     onclick="openLightbox(1)"
                 >
 
                 <img
                     src="image/image (2).png"
                     alt="Wedding Photography"
+                    data-category="wedding"
                     onclick="openLightbox(2)"
                 >
 
                 <img
                     src="image/ear1 (1).jpg"
                     alt="Event Photography"
+                    data-category="event"
                     onclick="openLightbox(3)"
                 >
 
                 <img
                     src="image/ear2.png"
                     alt="Event Photography"
+                    data-category="event"
                     onclick="openLightbox(4)"
                 >
 
                 <img
                     src="image/ear3.jpg"
                     alt="Event Photography"
+                    data-category="event"
                     onclick="openLightbox(5)"
                 >
 
                 <img
                     src="image/ear4.jpg"
                     alt="Event Photography"
+                    data-category="event"
                     onclick="openLightbox(6)"
                 >
 
                 <img
                     src="image/ear5.jpg"
                     alt="Event Photography"
+                    data-category="event"
                     onclick="openLightbox(7)"
                 >
 
                 <img
                     src="image/babyshot1.jpg"
                     alt="Baby Photography"
+                    data-category="baby"
                     onclick="openLightbox(8)"
                 >
 
                 <img
                     src="image/babyshot2.jpg"
                     alt="Baby Photography"
+                    data-category="baby"
                     onclick="openLightbox(9)"
                 >
 
                 <img
                     src="image/babyshot3.jpg"
                     alt="Baby Photography"
+                    data-category="baby"
                     onclick="openLightbox(10)"
                 >
 
                 <img
                     src="image/babyshower1 (1).jpg"
                     alt="Baby Shower Photography"
+                    data-category="babyshower"
                     onclick="openLightbox(11)"
                 >
 
                 <img
                     src="image/babyshower1 (2).jpg"
                     alt="Baby Shower Photography"
+                    data-category="babyshower"
                     onclick="openLightbox(12)"
                 >
 
@@ -2936,14 +3035,17 @@
 
 
                     <label for="advance">
-                        Advance to Book (20%)
+                        Advance to Book (₹)
                     </label>
 
                     <input
                         id="advance"
-                        readonly
-                        placeholder="Auto-calculated once you pick a package"
+                        type="text"
+                        inputmode="numeric"
+                        placeholder="Auto-suggested once you pick a package — edit if needed"
                     >
+
+                    <p class="advance-hint" id="advanceHint"></p>
 
                     <div class="pay-advance-row" id="payAdvanceRow">
 
@@ -3186,21 +3288,44 @@
         function updateAdvance(amountStr) {
 
             const advanceInput = document.getElementById("advance");
-            const payRow = document.getElementById("payAdvanceRow");
-            const payBtn = document.getElementById("payAdvanceBtn");
-            const qrImg = document.getElementById("upiQr");
+            const hint = document.getElementById("advanceHint");
 
             const basePrice = parsePriceToNumber(amountStr);
 
             if (!basePrice) {
                 advanceInput.value = "";
-                payRow.classList.remove("show");
+                hint.textContent = "";
+                refreshUpiPayment();
                 return;
             }
 
-            const advanceAmount = Math.round(basePrice * ADVANCE_PERCENT);
+            const suggested = Math.round(basePrice * ADVANCE_PERCENT);
 
-            advanceInput.value = `₹${advanceAmount.toLocaleString("en-IN")} (20% of ₹${basePrice.toLocaleString("en-IN")})`;
+            // Pre-fill a suggested 20% advance, but the client can edit it
+            advanceInput.value = suggested;
+
+            hint.textContent =
+                `Suggested 20% of ₹${basePrice.toLocaleString("en-IN")} = ₹${suggested.toLocaleString("en-IN")}. You can change this amount.`;
+
+            refreshUpiPayment();
+        }
+
+        // Rebuilds the UPI pay button + QR code from whatever amount is
+        // currently typed into the advance field (not just the suggested one).
+        function refreshUpiPayment() {
+
+            const advanceInput = document.getElementById("advance");
+            const payRow = document.getElementById("payAdvanceRow");
+            const payBtn = document.getElementById("payAdvanceBtn");
+            const qrImg = document.getElementById("upiQr");
+
+            const digitsOnly = advanceInput.value.replace(/[^\d]/g, "");
+            const advanceAmount = parseInt(digitsOnly, 10);
+
+            if (!advanceAmount || advanceAmount <= 0) {
+                payRow.classList.remove("show");
+                return;
+            }
 
             const name = document.getElementById("name").value || "Client";
             const service = document.getElementById("service").value || "Booking";
@@ -3221,6 +3346,9 @@
 
             payRow.classList.add("show");
         }
+
+        // Rebuild the QR/link whenever the client edits the advance amount
+        document.getElementById("advance").addEventListener("input", refreshUpiPayment);
 
 
         /* =====================================================
@@ -3636,9 +3764,14 @@
                     document.getElementById("price").value ||
                     "Not specified";
 
-                const advance =
-                    document.getElementById("advance").value ||
-                    "Not specified";
+                const advanceRaw =
+                    document.getElementById("advance").value;
+
+                const advanceDigits = advanceRaw.replace(/[^\d]/g, "");
+
+                const advance = advanceDigits
+                    ? `₹${parseInt(advanceDigits, 10).toLocaleString("en-IN")}`
+                    : "Not specified";
 
                 const date =
                     document.getElementById("date").value ||
@@ -3657,7 +3790,7 @@ Phone: ${phone}
 Service: ${service}
 Package: ${packageChoice}
 Price: ${price}
-Advance (20%): ${advance}
+Advance to Pay: ${advance}
 Event Date: ${date}
 Message: ${message}`;
 
